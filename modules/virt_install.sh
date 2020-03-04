@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Description: Create a vm based on given argument which are <vm_name> and <disk_name>
 source create_disk.sh
 # ubuntu <vm_name> <disk_name> 
 

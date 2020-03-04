@@ -1,5 +1,4 @@
-build:
-  before_script:
-   - . main.sh
-  script:
-   - main -l
+before_script:
+ - . main.sh
+script:
+ - main -l

@@ -3,8 +3,8 @@
 kvm_check () 
 {
   echo 'Checking virtualization ... ' 
-  [ "$(lsmod | grep kvm)" ] && ec=$?
-  if [ ec = 1 ]
+  [ "$(lsmod | grep kvm)" ] && ec="$?"
+  if [ "$ec" = 0 ]
   then 
     echo 'Done'
   else

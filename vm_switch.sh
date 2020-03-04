@@ -45,7 +45,7 @@ main ()
 {
   while [ -n "$1" ]
   do
-				#kvm_check
+				kvm_check
     case "$1" in 
       --list | -l)
         virsh list --all 

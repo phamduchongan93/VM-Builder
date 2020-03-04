@@ -1,1 +1,4 @@
-language: bash
+language: bash 
+  script: 
+dist: bionic    
+

@@ -4,10 +4,10 @@
 # Date: Wed Mar  4 03:00:30 EST 2020
 
 ### Add Libraries ###
-source ./kvm_check.sh
-source	./check_argument.sh
-source	./disk_destroy.sh
-source	./domain_destroy.sh
+source modules/kvm_check.sh
+source	modules/check_argument.sh
+source	modules/disk_manage.sh
+source	modules/domain_destroy.sh
 
 ### Initialize Global Variable ### 
 init ()

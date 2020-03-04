@@ -12,13 +12,14 @@ source	./domain_destroy.sh
 ### Initialize Global Variable ### 
 init ()
 {
+	 # assigning Storage Pool
   images='/home/anpham/images'
   centos_images='/home/anpham/images/'
   ubuntu_images='/home/anpham/images/'
   windows='/home/anpham/images/'
   disk_location='/home/anpham/images/'
-  [ "$1" == '-b' ] && os_type="$2"
-  [ "$1" == '-b' ] && os_type="$2"
+
+  # getting user input
   read -p "Name of VM: " vm_name
   disk_name="/home/anpham/storage_pool2/$vm_name.img"
   read -p "Disk Size (Gigabyte): " disk_size
@@ -72,8 +73,9 @@ main ()
         ;;
       -d | --destroy)
         # destroy installed vm
-        disk_destroy "$vm_name"
-        domain_destroy "$vm_name"
+        shift 
+        disk_destroy "$1"
+        domain_destroy "$1"
         ;;
       * | -*)
         virsh list --all

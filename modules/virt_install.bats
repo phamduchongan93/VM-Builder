@@ -16,6 +16,6 @@ source domain_destroy.sh
 }
 
 @test 'try to build ubuntu' {
-#  ubuntu "test1" "30G" ; ec="$?"
-#  [ "$ec" = 0 ]  
+  ubuntu "test1" "30G" ; ec="$?"
+  [ "$ec" = 0 ]  
 } 

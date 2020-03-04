@@ -1,6 +1,7 @@
 #!/bin/bash
 # Project: VM Builder
 # Description: script built to initialize a VM and provide accessibility to the program.
+# Date: Wed Mar  4 03:00:30 EST 2020
 
 ### Add Libraries ###
 source ./kvm_check.sh
@@ -81,5 +82,6 @@ main ()
     shift 
   done 
 }
+
 ### Program Start ### 
 main "$@" 

@@ -1,4 +1,6 @@
 language: bash 
   script: 
+    bats modules/kvm_check.bats
+    bats modules/files_check.bats 
 dist: bionic    
 

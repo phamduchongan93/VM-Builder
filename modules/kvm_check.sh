@@ -6,7 +6,7 @@ kvm_check ()
   [ "$(lsmod | grep kvm)" ] && ec="$?"
   if [ "$ec" = 0 ]
   then 
-    echo 'Done'
+    echo 'KVM found'
   else
     echo 'Not found'
     exit 1

@@ -8,6 +8,8 @@ source modules/kvm_check.sh
 source	modules/check_argument.sh
 source	modules/disk_manage.sh
 source	modules/domain_destroy.sh
+source modules/virt_install.sh
+source modules/files_check.sh
 
 ### Initialize Global Variable ### 
 init ()
@@ -40,11 +42,12 @@ main ()
         ;;
       -b | --build) 
         # choose Os type to build 
+        image_check "$ubuntu_images"
         shift
         init "$@"
 								case $1 in
 										ubuntu)
-            ubuntu 
+            ubuntu "$vm_name" "$disk_name" "$disk_size" "$ubuntu_images"
 												;;       
 										centos)
 												echo 'centos built'
@@ -67,5 +70,4 @@ main ()
     shift 
   done 
 }
-
 main "$@" 

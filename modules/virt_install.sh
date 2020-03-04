@@ -9,7 +9,7 @@ ubuntu ()
   create_disk && echo 'New disk created' || echo 'No disk created'
   echo "Path is $disk_ubuntu.img"
   echo "Building the ubuntu vm ..."
-  virt-install -n "$1" --description "run in console mode" --ram=2048 --vcpu=2 --disk path="$2",bus=virtio,size=60 --graphic none --location="/home/anpham/images/ubuntu-18.04.4-server-amd64.iso" --extra-args="console=tty0 console=ttyS0,115200" --check all=off & 
+  virt-install -n "$1" --description "run in console mode" --ram=2048 --vcpu=2 --disk path="$2",bus=virtio,size=60 --graphic none --location="$2" --extra-args="console=tty0 console=ttyS0,115200" --check all=off & 
   ec=$? 
   [ "$ec" = 0 ] && echo "New ubuntu vm created"
 }

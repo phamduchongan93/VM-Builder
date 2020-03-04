@@ -16,7 +16,7 @@ init ()
   # these directories are storage for iso images
   images='/home/anpham/images'
   centos_images='/home/anpham/images/'
-  ubuntu_images='/home/anpham/images/'
+  ubuntu_images='/home/anpham/images/ubuntu-18.04.4-server-amd64.iso'
   windows='/home/anpham/images/'
   disk_location='/home/anpham/images/'
 

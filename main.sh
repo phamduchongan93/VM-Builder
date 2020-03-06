@@ -75,6 +75,10 @@ main ()
         shift 
         virsh shutdown "$1"
         ;;
+      --auto-start)
+        shift
+        virsh autostart "$1" 
+        ;;
       * | -*)
         virsh list --all
         ;; 

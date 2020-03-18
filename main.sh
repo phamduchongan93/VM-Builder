@@ -20,7 +20,6 @@ init ()
   # can be added in bash and set up as enviroment variable
   centos_images='/home/anpham/Downloads/CentOS-8.1.1911-x86_64-dvd1/CentOS-8.1.1911-x86_64-dvd1.iso'
   ubuntu_images='/home/anpham/images/ubuntu-18.04.4-server-amd64.iso'
-  EDITOR='vim'
 
   # getting user input
   read -p "Name of VM: " vm_name

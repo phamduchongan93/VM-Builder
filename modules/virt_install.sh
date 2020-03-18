@@ -18,14 +18,14 @@ centos ()
 {
   # centos <vm_name> <disk_name> <disk_size> <image_location>
   echo 'Building the centos vm ...'
-  virt-install -n "$1" 
-         --description "centos run in console mode" \
-         --os-type=Linux --os-variant centos7.0 \
-         --ram-2048 --vcpu=2 \
-         --disk path="2",bus=virtio,size="$3" --graphic none \
-         --location "$4" \
-         --extra-args="console=tty0 console=ttyS0,115200" \
-         --check all=off \
-  ec=$? 
+  virt-install -n "$1" \
+							--description "centos run in console mode" \
+							--os-type=Linux --os-variant centos7.0 \
+							--ram 2048 --vcpu=2 \
+							--disk path="2",bus=virtio,size="$3" --graphic none \
+							--location "$4" \
+							--extra-args="console=tty0 console=ttyS0,115200" \
+							--check all=off 
+  ec="$?"
   [ "$ec" = 0 ] && echo "New centos vm created"
 }

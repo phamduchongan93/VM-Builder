@@ -5,11 +5,12 @@
 
 ### Add Libraries ###
 source modules/kvm_check.sh
-source  modules/check_argument.sh
-source  modules/disk_manage.sh
-source  modules/domain_destroy.sh
+source modules/check_argument.sh
+source modules/disk_manage.sh
+source modules/domain_destroy.sh
 source modules/virt_install.sh
 source modules/files_check.sh
+source modules/help.sh
 
 ### Initialize Global Variable ### 
 init ()
@@ -79,8 +80,14 @@ main ()
         shift
         virsh autostart "$1" 
         ;;
+      --clone)
+        shift
+        clone_vm  
       * | -*)
-        virsh list --all
+        echo 'Invalid argument'
+        help
+        exit 1
+        break
         ;; 
     esac
     shift 

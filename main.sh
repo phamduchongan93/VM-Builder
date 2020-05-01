@@ -11,16 +11,18 @@ source modules/domain_destroy.sh
 source modules/virt_install.sh
 source modules/files_check.sh
 source modules/help.sh
+source modules/clone_vm.sh
 
 ### Initialize Global Variable ### 
 init ()
 {
-   # assigning Storage Pool
+  # assigning Storage Pool
   # these directories are storages for iso images
   # can be added in bash and set up as enviroment variable
   centos_images='/home/anpham/Downloads/CentOS-8.1.1911-x86_64-dvd1/CentOS-8.1.1911-x86_64-dvd1.iso'
   ubuntu_images='/home/anpham/images/ubuntu-18.04.4-server-amd64.iso'
-
+  
+  [ -z "$centos_images" ] && printf "Error: Cant find the centos_images"
   # getting user input
   read -p "Name of VM: " vm_name
   disk_name="/home/anpham/storage_pool2/$vm_name.img"
@@ -41,9 +43,9 @@ main ()
       -b | --build) 
         kvm_check
         # choose Os type to build 
-        image_check "$ubuntu_images"
         shift
-        init "$@"
+        image_check "$ubuntu_images"
+        init "$@" # export vm info and images checking
                 case $1 in
                     ubuntu)
             ubuntu "$vm_name" "$disk_name" "$disk_size" "$ubuntu_images"
@@ -80,7 +82,14 @@ main ()
         ;;
       --clone)
         shift
-        clone_vm  
+        # clone_vm <source> <target>
+        clone_vm  "$1" "$2"
+        shift
+        ;;
+      --attach-disk)
+        shift 
+        attack_disk $1
+        ;;
       * | -*)
         echo 'Invalid argument'
         help

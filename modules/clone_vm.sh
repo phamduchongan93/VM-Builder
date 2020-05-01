@@ -1,7 +1,7 @@
 #!/bin/bash
 # Description: clone the current running vm to a new vm with new qcow2 disk format
 
-clone-disk () {
+clone_vm () {
   # clone-disk "$source_vm" "$target_vm"
   local source_vm="$1"
   local target_vm="$2"

@@ -10,10 +10,11 @@ help () {
   echo '  -d,--destroy destroy the vm'
   echo '  --clone      clone the current running vm'
   echo 'Example:'
-  echo "  $(basename $0) -l   list current running system"
-  echo "  $(basename $0) -b ubuntu"
-  echo "       Build a new ubuntu machine" 
-  echo "  $(basename $0) "
+  echo "  $(basename $0) -l             List current running system"
+  echo "  $(basename $0) -b ubuntu      Build a new ubuntu machine" 
+	echo "  $(basename $0) -d <vm_name>   Destroy the domain or vm name"
+	echo ""
+
 }                      
 
 

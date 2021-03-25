@@ -20,9 +20,10 @@ init ()
   # these directories are storages for iso images
   # can be added in bash and set up as enviroment variable
   centos_images='/home/anpham/Downloads/CentOS-8.1.1911-x86_64-dvd1/CentOS-8.1.1911-x86_64-dvd1.iso'
-  ubuntu_images='/home/anpham/images/ubuntu-18.04.4-server-amd64.iso'
+  ubuntu_images='/home/anpham/Downloads/ubuntu-20.10-desktop-amd64.iso'
   
   [ -z "$centos_images" ] && printf "Error: Cant find the centos_images"
+  [ -z "$ubunt_images" ] && printf "Error: Cant find the ubuntu"
   # getting user input
   read -p "Name of VM: " vm_name
   disk_name="/home/anpham/storage_pool2/$vm_name.img"
@@ -46,7 +47,7 @@ main ()
         shift
         image_check "$ubuntu_images"
         init "$@" # export vm info and images checking
-                case $1 in
+            case $1 in
                     ubuntu)
             ubuntu "$vm_name" "$disk_name" "$disk_size" "$ubuntu_images"
                         ;;       
@@ -56,7 +57,7 @@ main ()
                     *)
                         echo "Invalid: Require 'Ubuntu' or 'Centos' argument"
                         ;;
-                esac 
+            esac 
         ;;
       -d | --destroy)
         # destroy installed vm

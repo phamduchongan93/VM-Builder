@@ -23,7 +23,8 @@ init ()
   ubuntu_images='/home/anpham/Downloads/ubuntu-20.10-desktop-amd64.iso'
   
   [ -z "$centos_images" ] && printf "Error: Cant find the centos_images"
-  [ -z "$ubunt_images" ] && printf "Error: Cant find the ubuntu"
+  [ -z "$ubuntu_images" ] && printf "Error: Cant find the ubuntu"
+   image_check "$ubuntu_images"
   # getting user input
   read -p "Name of VM: " vm_name
   disk_name="/home/anpham/storage_pool2/$vm_name.img"
@@ -45,19 +46,20 @@ main ()
         kvm_check
         # choose Os type to build 
         shift
-        image_check "$ubuntu_images"
-        init "$@" # export vm info and images checking
-            case $1 in
-                    ubuntu)
+				init "$@" # export vm info and images checking
+        case $1 in
+          ubuntu)
+            echo "Image Path: $ubuntu_images"
+				    read -p "Press Any Key to Continue"
             ubuntu "$vm_name" "$disk_name" "$disk_size" "$ubuntu_images"
-                        ;;       
-                    centos)
+            ;;       
+          centos)
             centos "$vm_name" "$disk_name" "$disk_size" "$centos_images"
-                        ;;   
-                    *)
-                        echo "Invalid: Require 'Ubuntu' or 'Centos' argument"
-                        ;;
-            esac 
+            ;;   
+          *)
+            echo "Invalid: Require 'Ubuntu' or 'Centos' argument"
+            ;;
+        esac 
         ;;
       -d | --destroy)
         # destroy installed vm
